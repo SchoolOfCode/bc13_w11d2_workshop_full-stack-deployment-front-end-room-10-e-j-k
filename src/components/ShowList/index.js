@@ -11,7 +11,7 @@ function ShowList({ list, tickItem }) {
           name={listItem.item}
           completed={listItem.completed}
           key={listItem.id}
-          tickItem={() => tickItem(listItem.id)}
+          tickItem={() => tickItem(listItem.id, listItem.completed)}
         />
       ))}
     </ol>

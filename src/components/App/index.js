@@ -60,7 +60,15 @@ function App() {
     const data = await response.json();
   }
 
-  function tickItem(idOfTickedItem) {
+  async function tickItem(idOfTickedItem, nowCompleted) {
+    const response = await fetch(`${url}/items/${idOfTickedItem}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ marked: !nowCompleted }),
+    });
+    const data = await response.json();
+    console.log(data);
+
     setList((previous) => {
       return previous.map((item) => {
         return item.id !== idOfTickedItem
